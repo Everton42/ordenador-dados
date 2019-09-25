@@ -1,4 +1,4 @@
-# ordenador-numerico
+# Ordenador Numérico
 Atividades Práticas Supervisionadas - 4ºSemestre UNIP
 ## Decrição da Atividade Proposta
 
