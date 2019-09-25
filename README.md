@@ -2,7 +2,7 @@
 Atividades Práticas Supervisionadas - 4ºSemestre UNIP
 ## Decrição da Atividade Proposta
 
-1)O grupo de alunos deverá realizar um trabalho utilizando algoritmos
+1) O grupo de alunos deverá realizar um trabalho utilizando algoritmos
 considerando o seguinte exemplo: o geoprocessamento de imagens da floresta
 amazônica permite a fiscalização de ações de crimes ambientais. Os satélites
 geram cerca de 100 mil imagens de toda a região a cada 24 horas, essas
