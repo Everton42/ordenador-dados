@@ -1,6 +1,6 @@
 # Ordenador Numérico
 Atividades Práticas Supervisionadas - 4ºSemestre UNIP
-## Decrição da Atividade Proposta
+## Descrição da Atividade Proposta
 
 1) O grupo de alunos deverá realizar um trabalho utilizando algoritmos
 considerando o seguinte exemplo: o geoprocessamento de imagens da floresta
