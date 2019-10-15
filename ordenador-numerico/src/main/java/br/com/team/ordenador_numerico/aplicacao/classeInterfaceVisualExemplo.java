@@ -12,7 +12,7 @@ public class classeInterfaceVisualExemplo {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		
 		File diretorio = new File("C:\\Temp\\Coordenadas");
-		diretorio.mkdir();
+		diretorio.mkdirs();
 		
 		GeradorPequeno s = new GeradorPequeno();
 		GeradorMedio m = new GeradorMedio();
