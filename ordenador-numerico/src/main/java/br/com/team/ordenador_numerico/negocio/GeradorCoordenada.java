@@ -29,8 +29,8 @@ public class GeradorCoordenada {
 		while (i <= getQuantidade()) {
 			setLatitude(gerarCoordenadaAleatoria(COORD_Y));
 			setLongitude(gerarCoordenadaAleatoria(COORD_X));
-			String coordenada = String.valueOf(getLatitude()) + " , " + String.valueOf(getLongitude());
-			setCoordenadas(coordenada);
+			//String coordenada = String.valueOf(getLatitude()) + " , " + String.valueOf(getLongitude());
+			//setCoordenadas(coordenada);
 			i++;
 		}
 	}
