@@ -20,8 +20,6 @@ public class GeradorArquivo {
 		}
 	}
 
-	// TODO Criar metodo que le o arquiv e transformas em numeros para ordenar
-
 	public String getPath() {
 		return path;
 	}

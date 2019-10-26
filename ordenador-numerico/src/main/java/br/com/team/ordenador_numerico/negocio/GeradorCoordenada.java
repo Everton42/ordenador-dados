@@ -9,7 +9,7 @@ public class GeradorCoordenada {
 	private double latitude;
 	private double longitude;
 	private int quantidade;
-	private List<String> coordenadas = new ArrayList<>();
+	private List<Double> coordenadas = new ArrayList<>();
 
 	private static final int COORD_X = 180;
 	private static final int COORD_Y = 90;
@@ -29,17 +29,21 @@ public class GeradorCoordenada {
 		while (i <= getQuantidade()) {
 			setLatitude(gerarCoordenadaAleatoria(COORD_Y));
 			setLongitude(gerarCoordenadaAleatoria(COORD_X));
-			//String coordenada = String.valueOf(getLatitude()) + " , " + String.valueOf(getLongitude());
-			//setCoordenadas(coordenada);
+			setCoordenadas(getLatitude());
+			setCoordenadas(getLongitude());
 			i++;
 		}
 	}
+	
+	public String formataCoordenadas(double latitude, double longitude) {
+		return String.valueOf(latitude + ", "+longitude);
+	}
 
-	public List<String> getCoordenadas() {
+	public List<Double> getCoordenadas() {
 		return coordenadas;
 	}
 
-	public void setCoordenadas(String coordenadas) {
+	public void setCoordenadas(double coordenadas) {
 		this.coordenadas.add(coordenadas);
 	}
 
