@@ -19,7 +19,7 @@ public class GeradorCoordenada {
 	}
 
 	private double gerarCoordenadaAleatoria(int n) {
-		double coordenada = Math.random() * ((n + n)) - n; // TODO verificar se ha erro
+		double coordenada = Math.random() * n;
 		BigDecimal bd = BigDecimal.valueOf(coordenada).setScale(6, RoundingMode.HALF_EVEN);
 		return bd.doubleValue();
 	}
