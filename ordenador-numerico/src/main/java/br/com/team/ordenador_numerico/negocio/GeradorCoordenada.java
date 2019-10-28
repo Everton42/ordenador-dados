@@ -36,7 +36,7 @@ public class GeradorCoordenada {
 	}
 	
 	public String formataCoordenadas(double latitude, double longitude) {
-		return String.valueOf(latitude + ", "+longitude);
+		return String.valueOf(latitude + ", " + longitude);
 	}
 
 	public List<Double> getCoordenadas() {
