@@ -1,11 +1,13 @@
 package br.com.team.ordenador_numerico.negocio.algoritmos;
 
-public class MergeSort {
+import br.com.team.ordenador_numerico.negocio.CalcTempoExecucao;
 
-	private double v[];
-	private double w[];
+public class MergeSort implements CalcTempoExecucao{
+
+	private double []v;
+	private double []w;
 	
-	public MergeSort(double vet[]) {
+	public MergeSort(double []vet) {
 		setVetor(vet);
 	}
 	

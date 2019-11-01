@@ -35,7 +35,7 @@ public class GeradorCoordenada {
 		}
 	}
 	
-	public String formataCoordenadas(double latitude, double longitude) {
+	public static String formataCoordenadas(double latitude, double longitude) {
 		return String.valueOf(latitude + ", " + longitude);
 	}
 

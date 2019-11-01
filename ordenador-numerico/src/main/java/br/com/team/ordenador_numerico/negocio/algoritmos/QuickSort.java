@@ -4,13 +4,13 @@ import br.com.team.ordenador_numerico.negocio.CalcTempoExecucao;
 
 public class QuickSort implements CalcTempoExecucao {
 
-	private double []numeros;
+	private double[] numeros;
 
-	public QuickSort(double []arr) {
+	public QuickSort(double[] arr) {
 		setNumeros(arr);
 	}
 
-	private int particionar(double []arr, int esq, int dir) {
+	private int particionar(double[] arr, int esq, int dir) {
 		int i = esq;
 		int j = dir;
 		double tmp;
@@ -36,7 +36,7 @@ public class QuickSort implements CalcTempoExecucao {
 		return i;
 	}
 
-	private void quickSort(double []arr, int esq, int dir) {
+	private void quickSort(double[] arr, int esq, int dir) {
 
 		int indice = particionar(arr, esq, dir);
 		if (esq < indice - 1)
@@ -47,16 +47,16 @@ public class QuickSort implements CalcTempoExecucao {
 	}
 
 	public long calcularTempoAlgoritmo() {
-		 long tempoInicial = System.currentTimeMillis();
-		 quickSort(getNumeros(), 0, getNumeros().length-1);
+		long tempoInicial = System.currentTimeMillis();
+		quickSort(getNumeros(), 0, getNumeros().length - 1);
 
-		 return  System.currentTimeMillis() - tempoInicial;
+		return System.currentTimeMillis() - tempoInicial;
 	}
-	
+
 	public void setNumeros(double[] nmr) {
 		numeros = nmr;
 	}
-	
+
 	public double[] getNumeros() {
 		return numeros;
 	}

@@ -7,58 +7,65 @@ import org.apache.commons.lang.ArrayUtils;
 
 import br.com.team.ordenador_numerico.infraestrutura.gerador_arquivo.GeradorArquivo;
 import br.com.team.ordenador_numerico.negocio.GeradorCoordenada;
-import br.com.team.ordenador_numerico.negocio.algoritmos.QuickSort;
+import br.com.team.ordenador_numerico.negocio.algoritmos.*;
 
 public class Apresentacao {
 	public static void main(String[] args) {
-		String path = "C:\\Temp\\Coordenadas\\";
-		File pastas = new File(path);
+		int tamanhoArquivo = 1000;
+		String pathOrdenado = "C:\\Temp\\Coordenadas\\Ordenado\\";
+		String pathDesordenado = "C:\\Temp\\Coordenadas\\Desordenado\\";
+
+		File pastas = new File(pathOrdenado);
 		pastas.mkdirs();
+		File diretorio = new File(pathDesordenado);
+		diretorio.mkdirs();
 
-		GeradorCoordenada geradorCoordenada = new GeradorCoordenada(10);
-		geradorCoordenada.gerarCoordenadas(); 
-		List<Double> coordenadasGeradas = geradorCoordenada.getCoordenadas();
+		GeradorArquivo geradorArquivoDesordenado = new GeradorArquivo(pathDesordenado);
+		GeradorArquivo geradorArquivoOrdenado = new GeradorArquivo(pathOrdenado);
 
-		GeradorArquivo geradorArquivo = new GeradorArquivo(path);
+		GeradorCoordenada geradorCoordenadaQuickSort = new GeradorCoordenada(tamanhoArquivo);
+		GeradorCoordenada geradorCoordenadaMergeSort = new GeradorCoordenada(tamanhoArquivo);
+		GeradorCoordenada geradorCoordenadaHeapSort = new GeradorCoordenada(tamanhoArquivo);
 
-		int contador = 0;
-		double latitude = 0;
-		double longitude = 0;
-		for (double coordenada : coordenadasGeradas) { // TODO Logica temporaria, separar bloco da apresentacao
-			contador++;
+		geradorCoordenadaQuickSort.gerarCoordenadas();
+		List<Double> coordenadasGeradasQuickSort = geradorCoordenadaQuickSort.getCoordenadas();
 
-			if (contador == 1) {
-				latitude = coordenada;
-				continue;
-			}
-			longitude = coordenada;
+		geradorCoordenadaMergeSort.gerarCoordenadas();
+		List<Double> coordenadasGeradasMergeSort = geradorCoordenadaMergeSort.getCoordenadas();
 
-			String coordenadas = geradorCoordenada.formataCoordenadas(latitude, longitude);
-			geradorArquivo.gravarTexto("arquivo1000", coordenadas);
-			contador = 0;
-		}
+		geradorCoordenadaHeapSort.gerarCoordenadas();
+		List<Double> coordenadasGeradasHeapSort = geradorCoordenadaHeapSort.getCoordenadas();
 
+		geradorArquivoDesordenado.gerarArquivoCoordenadaDesordenada(coordenadasGeradasQuickSort,
+				"QuickSort" + tamanhoArquivo);
+		geradorArquivoDesordenado.gerarArquivoCoordenadaDesordenada(coordenadasGeradasMergeSort,
+				"MergeSort" + tamanhoArquivo);
+		geradorArquivoDesordenado.gerarArquivoCoordenadaDesordenada(coordenadasGeradasHeapSort,
+				"HeapSort" + tamanhoArquivo);
+
+		double[] arrQuick = listaParaArray(coordenadasGeradasQuickSort);
+		double[] arrMerge = listaParaArray(coordenadasGeradasMergeSort);
+		double[] arrHeap = listaParaArray(coordenadasGeradasHeapSort);
+
+		QuickSort quickSort = new QuickSort(arrQuick);
+		MergeSort mergeSort = new MergeSort(arrMerge);
+		HeapSort heapSort = new HeapSort(arrHeap);
+
+		long tempoExecQuickSort = quickSort.calcularTempoAlgoritmo();
+		long tempoExecMergeSort = mergeSort.calcularTempoAlgoritmo();
+		long tempoExecHeapSort = heapSort.calcularTempoAlgoritmo();
+
+		System.out.println("QuickSort: " + tempoExecQuickSort + "ms");
+		System.out.println("MergeSort: " + tempoExecMergeSort + "ms");
+		System.out.println("HeapSort: " + tempoExecHeapSort + "ms");
+
+		geradorArquivoOrdenado.gerarArquivoOrdenado(arrQuick, "QuickSort" + tamanhoArquivo);
+		geradorArquivoOrdenado.gerarArquivoOrdenado(arrMerge, "MergeSort" + tamanhoArquivo);
+		geradorArquivoOrdenado.gerarArquivoOrdenado(arrHeap, "HeapSort" + tamanhoArquivo);
+	}
+
+	private static double[] listaParaArray(List<Double> coordenadasGeradas) {
 		Double[] arrDouble = coordenadasGeradas.toArray(new Double[coordenadasGeradas.size()]);
-		double[] arrCoordenadas = ArrayUtils.toPrimitive(arrDouble);
-
-		QuickSort qk = new QuickSort(arrCoordenadas);
-		long tempoExec = qk.calcularTempoAlgoritmo();
-
-		System.out.println(tempoExec);
-
-		contador = 0;
-		StringBuilder coordenadaOrdenadas = new StringBuilder();
-		for (double coordenada : arrCoordenadas) { // TODO Logica temporaria, separar bloco da apresentacao
-			contador++;
-
-			if (contador < 5) { // corrigir 
-				coordenadaOrdenadas.append(String.valueOf(coordenada+", "));
-				continue;
-			}
-			coordenadaOrdenadas.append(String.valueOf(", "+coordenada));
-			geradorArquivo.gravarTexto("arquivo1000-QuickSort", coordenadaOrdenadas.toString()); // grava coordenadas ordenadas geradas no arquivo
-			contador = 0;
-			coordenadaOrdenadas.setLength(0);
-		}
+		return ArrayUtils.toPrimitive(arrDouble);
 	}
 }
