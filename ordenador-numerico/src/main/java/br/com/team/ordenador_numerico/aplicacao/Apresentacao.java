@@ -1,7 +1,12 @@
 package br.com.team.ordenador_numerico.aplicacao;
 
+import java.awt.EventQueue;
 import java.io.File;
 import java.util.List;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import org.apache.commons.lang.ArrayUtils;
 
@@ -9,8 +14,23 @@ import br.com.team.ordenador_numerico.infraestrutura.gerador_arquivo.GeradorArqu
 import br.com.team.ordenador_numerico.negocio.GeradorCoordenada;
 import br.com.team.ordenador_numerico.negocio.algoritmos.*;
 
-public class Apresentacao {
+public class Apresentacao extends JFrame{
+	
+	private JPanel basePane;
+	
 	public static void main(String[] args) {
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Apresentacao frame = new Apresentacao();
+					frame.setVisible(true);
+                                } catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
 		int tamanhoArquivo = 1000;
 		String pathOrdenado = "C:\\Temp\\Coordenadas\\Ordenado\\";
 		String pathDesordenado = "C:\\Temp\\Coordenadas\\Desordenado\\";
@@ -68,4 +88,20 @@ public class Apresentacao {
 		Double[] arrDouble = coordenadasGeradas.toArray(new Double[coordenadasGeradas.size()]);
 		return ArrayUtils.toPrimitive(arrDouble);
 	}
+	
+	public Apresentacao() {
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 500);
+		basePane = new JPanel();
+		basePane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		basePane.setLayout(null);
+		setContentPane(basePane);
+		setResizable(false);
+        setTitle("Ordenador de Coordenadas");
+		                
+        Janela J1 = new Janela(basePane);
+
+	}
+	
 }
