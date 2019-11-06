@@ -2,84 +2,136 @@ package br.com.team.ordenador_numerico.aplicacao;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class Janela{
-	
+import br.com.team.ordenador_numerico.negocio.ProcessoOrdenacao;
+
+public class Janela {
+
 	protected JPanel basePane;
 
 	public Janela(JPanel basePane) {
-		
-		SetBasePane(basePane);
-		SetNewPane(Window(), basePane);
-		
+		setBasePane(basePane);
+		setNewPane(window(), basePane);
 	}
 
-	public JPanel Window() {
-		
+	public JPanel window() {
+
 		JPanel contentPane = new JPanel();
-		
+
 		contentPane.setBackground(new Color(50, 53, 58));
+
+		JLabel lbSaudacao = new JLabel("Bem-vindo");
+		lbSaudacao.setBounds(45, 80, 250, 30);
+		lbSaudacao.setForeground(Color.lightGray);
+		lbSaudacao.setFont(new Font(lbSaudacao.getFont().getName(), lbSaudacao.getFont().getStyle(), 30));
+		contentPane.add(lbSaudacao);
+
+		JLabel lbDesc = new JLabel("Obs: Os arquivos gerados ficaram no diretório 'C:\\Temp\\Coordenadas'");
+		lbDesc.setBounds(45, 120, 400, 30);
+		lbDesc.setForeground(Color.lightGray);
+		lbDesc.setFont(new Font(lbDesc.getFont().getName(), lbDesc.getFont().getStyle(), 10));
+		contentPane.add(lbDesc);
+
+		JLabel lbNomeArquivo = new JLabel("Digite o nome do arquivo:");
+		lbNomeArquivo.setBounds(45, 170, 350, 30);
+		lbNomeArquivo.setForeground(Color.lightGray);
+		contentPane.add(lbNomeArquivo);
+
+		JTextField campoNomeArquivo = new JTextField(20);
+		campoNomeArquivo.setBounds(45, 200, 350, 30);
+		campoNomeArquivo.setEditable(true);
+		campoNomeArquivo.setForeground(Color.white);
+		campoNomeArquivo.setBackground(new Color(48, 48, 48));
+		campoNomeArquivo
+				.setFont(new Font(campoNomeArquivo.getFont().getName(), campoNomeArquivo.getFont().getStyle(), 15));
+		contentPane.add(campoNomeArquivo);
+
+		JLabel lbQtdCoord = new JLabel("Digite a quantidade de coordenadas:");
+		lbQtdCoord.setBounds(45, 230, 350, 30);
+		lbQtdCoord.setForeground(Color.lightGray);
+		contentPane.add(lbQtdCoord);
+
+		JTextField campoQtdCoord = new JTextField(20);
+		campoQtdCoord.setBounds(45, 260, 350, 30);
+		campoQtdCoord.setEditable(true);
+		campoQtdCoord.setForeground(Color.white);
+		campoQtdCoord.setBackground(new Color(48, 48, 48));
+		campoQtdCoord.setFont(
+				new Font(campoQtdCoord.getFont().getName(), campoQtdCoord.getFont().getStyle(), 15));
+		contentPane.add(campoQtdCoord);
+
+		JLabel lbTempoExec = new JLabel("Tempo decorrido:");
+		lbTempoExec.setBounds(45, 290, 100, 30);
+		lbTempoExec.setForeground(Color.lightGray);
+		contentPane.add(lbTempoExec);
+
+		JTextArea tareaTempoExec = new JTextArea(1, 2);
+		tareaTempoExec.setBounds(45, 315, 350, 60);
+		tareaTempoExec.setEditable(false);
+		tareaTempoExec.setLineWrap(true);
+		tareaTempoExec.setForeground(Color.white);
+		tareaTempoExec.setFont(new Font(tareaTempoExec.getFont().getName(), tareaTempoExec.getFont().getStyle(), 12));
+		tareaTempoExec.setWrapStyleWord(true);
+		tareaTempoExec.setBackground(new Color(48, 48, 48));
+		contentPane.add(tareaTempoExec);
+
+		JButton btnGerar = new JButton("Gerar / Ordenar");
+		btnGerar.setBounds(45, 390, 150, 30);
+		btnGerar.setBackground(new Color(0, 159, 0));
+		btnGerar.setForeground(Color.white);
+		btnGerar.setOpaque(true);
+		btnGerar.setBorderPainted(false);
+		contentPane.add(btnGerar);
+
+		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.setBounds(295, 390, 100, 30);
+		btnLimpar.setBackground(new Color(0, 102, 255));
+		btnLimpar.setForeground(Color.white);
+		btnLimpar.setOpaque(true);
+		btnLimpar.setBorderPainted(false);
+		contentPane.add(btnLimpar);
+
+		btnGerar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String inputNomeArquivo = campoNomeArquivo.getText();
+				int inputTamanhoArquivo = Integer.parseInt(campoQtdCoord.getText());
+				ProcessoOrdenacao processo = new ProcessoOrdenacao(inputNomeArquivo, inputTamanhoArquivo);
+				String resultadoExec = processo.iniciar();
+				tareaTempoExec.setText(resultadoExec);
+			}
+		});
 		
-		JLabel desc = new JLabel("Para começar clique no botão");
-		desc.setBounds(80, 80, 400, 30);
-		desc.setForeground(Color.lightGray);
-		desc.setFont(new Font(desc.getFont().getName(), desc.getFont().getStyle(), 20));;
-		contentPane.add(desc);
-		
-		JLabel desc2 = new JLabel("'Gerar / Ordenar'");
-		desc2.setBounds(140, 120, 400, 30);
-		desc2.setForeground(Color.lightGray);
-		desc2.setFont(new Font(desc.getFont().getName(), desc.getFont().getStyle(), 20));;
-		contentPane.add(desc2);
-		
-		JLabel log = new JLabel("Tempo decorrido:");
-		log.setBounds(48, 228, 100, 30);
-		log.setForeground(Color.lightGray);
-		contentPane.add(log);
-						
-		JTextArea t1 = new JTextArea(1,2);
-		t1.setBounds(45, 260, 350, 100);
-		t1.setEditable(false);
-		t1.setLineWrap(true);
-		t1.setWrapStyleWord(true);
-		t1.setBackground(new Color(48, 48, 48));
-		contentPane.add(t1);
-		
-		JButton gerar = new JButton("Gerar / Ordenar");
-		gerar.setBounds(45, 390, 150, 30);
-		gerar.setBackground(new Color(0, 159, 0));
-		gerar.setForeground(Color.white);
-		gerar.setOpaque(true);
-		gerar.setBorderPainted(false);
-		contentPane.add(gerar);		
-		
-		JButton limpar = new JButton("Limpar");
-		limpar.setBounds(295, 390, 100, 30);
-		limpar.setBackground(new Color(0, 102, 255));
-		limpar.setForeground(Color.white);
-		limpar.setOpaque(true);
-		limpar.setBorderPainted(false);
-		contentPane.add(limpar);
-		
-		//event listeners
-		
+		btnLimpar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				campoNomeArquivo.setText("");	
+				campoQtdCoord.setText("");
+			}
+		});
+
 		return contentPane;
-		
+
 	}
-	
-	public void SetNewPane(JPanel contentPane, JPanel basePane) {
-		
+
+	public void setNewPane(JPanel contentPane, JPanel basePane) {
+
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		contentPane.setBounds(0, 0, 450, 500);
 		basePane.add(contentPane);
-		
+
 	}
-	
-	public void SetBasePane(JPanel basePane){
+
+	public void setBasePane(JPanel basePane) {
 		this.basePane = basePane;
 	};
-	
+
 }
