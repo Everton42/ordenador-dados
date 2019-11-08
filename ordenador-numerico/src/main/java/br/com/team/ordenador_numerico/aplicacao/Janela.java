@@ -42,7 +42,7 @@ public class Janela {
 		lbNomeArquivo.setForeground(Color.lightGray);
 		contentPane.add(lbNomeArquivo);
 
-		JTextField campoNomeArquivo = new JTextField(20);
+		final JTextField campoNomeArquivo = new JTextField(20);
 		campoNomeArquivo.setBounds(45, 200, 350, 30);
 		campoNomeArquivo.setEditable(true);
 		campoNomeArquivo.setForeground(Color.white);
@@ -56,7 +56,7 @@ public class Janela {
 		lbQtdCoord.setForeground(Color.lightGray);
 		contentPane.add(lbQtdCoord);
 
-		JTextField campoQtdCoord = new JTextField(20);
+		final JTextField campoQtdCoord = new JTextField(20);
 		campoQtdCoord.setBounds(45, 260, 350, 30);
 		campoQtdCoord.setEditable(true);
 		campoQtdCoord.setForeground(Color.white);
@@ -70,7 +70,7 @@ public class Janela {
 		lbTempoExec.setForeground(Color.lightGray);
 		contentPane.add(lbTempoExec);
 
-		JTextArea tareaTempoExec = new JTextArea(1, 2);
+		final JTextArea tareaTempoExec = new JTextArea(1, 2);
 		tareaTempoExec.setBounds(45, 315, 350, 60);
 		tareaTempoExec.setEditable(false);
 		tareaTempoExec.setLineWrap(true);
@@ -114,6 +114,7 @@ public class Janela {
 			public void actionPerformed(ActionEvent e) {
 				campoNomeArquivo.setText("");	
 				campoQtdCoord.setText("");
+				tareaTempoExec.setText("");
 			}
 		});
 
