@@ -1,7 +1,11 @@
 # Ordenador De Dados
 Atividades Práticas Supervisionadas - 4ºSemestre UNIP
 
-Os algoritmos utilizados foram: Quicksort, Mergesort e Heapsort.
+Os algoritmos utilizados foram: **Quicksort, Mergesort e Heapsort**.    
+O sistema gera uma determinada quantidade de coordenadas definida pelo usuário. Os dados são gerados e    
+são ordenados por cada um dos algoritmos. O tempo de execução da ordenação é exibido no final do processo.   
+Os arquivos são gerados no diretório a seguir:   
+      C:\Temp\Coordenadas
 
 ## Descrição da Atividade Proposta
 
