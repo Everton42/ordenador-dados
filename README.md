@@ -22,3 +22,5 @@ fornecidos diretamente pelo usuário).
 
 4) O sistema computacional deverá ser desenvolvido utilizando a linguagem de
 programação Java.
+
+![Screenshot](docs/screenshot.PNG)
