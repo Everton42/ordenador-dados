@@ -1,5 +1,8 @@
 # Ordenador De Dados
 Atividades Práticas Supervisionadas - 4ºSemestre UNIP
+
+Os algoritmos utilizados foram: Quicksort, Mergesort e Heapsort.
+
 ## Descrição da Atividade Proposta
 
 1) O grupo de alunos deverá realizar um trabalho utilizando algoritmos
